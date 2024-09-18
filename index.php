@@ -266,9 +266,100 @@ foreach ($averages as $student => $average) {
 
 $arr1 = [1, 2, 3, 4, 5];
 $arr2 = [...$arr1];
-$arr3=[0,...$arr2];
-$arr4=[...$arr2,...$arr3];
-foreach($arr4 as $arr){
+$arr3 = [0, ...$arr2];
+$arr4 = [...$arr2, ...$arr3];
+foreach ($arr4 as $arr) {
     echo $arr;
 }
- 
+echo "<br>";
+//Display array values within a string 
+$color = ['red', 'green', 'white', 'black', 'blue'];
+
+echo "The memory of that scene for me is like a frame of film forever frozen at that moment: the $color[0] carpet, the $color[1] lawn, the $color[2]
+ house, the leaden sky. The new president and his first lady. -Richard M. Nixon";
+echo "<br>";
+//sort array
+echo "<ul>";
+sort($color);
+foreach ($color as $col) {
+    echo "<li>$col</li>";
+}
+
+echo "</ul>";
+
+//echo the data
+$ceu = array(
+    "Italy" => "Rome",
+    "Luxembourg" => "Luxembourg",
+    "Belgium" => "Brussels",
+    "Denmark" => "Copenhagen",
+    "Finland" => "Helsinki",
+    "France" => "Paris",
+    "Slovakia" => "Bratislava",
+    "Slovenia" => "Ljubljana",
+    "Germany" => "Berlin",
+    "Greece" => "Athens",
+    "Ireland" => "Dublin",
+    "Netherlands" => "Amsterdam",
+    "Portugal" => "Lisbon",
+    "Spain" => "Madrid",
+    "Sweden" => "Stockholm",
+    "United Kingdom" => "London",
+    "Cyprus" => "Nicosia",
+    "Lithuania" => "Vilnius",
+    "Czech Republic" => "Prague",
+    "Estonia" => "Tallin",
+    "Hungary" => "Budapest",
+    "Latvia" => "Riga",
+    "Malta" => "Valetta",
+    "Austria" => "Vienna",
+    "Poland" => "Warsaw"
+);
+sort($ceu);
+foreach ($ceu as $country => $capital) {
+    echo "The capital of $country is $capital";
+    echo "<br>";
+}
+echo "<br>";
+//array data 
+$student_data = [
+    "Rohan" => "Lalitpur",
+    "Bishesh" => "Thankot",
+    "Sandesh" => "NewBaneshowr",
+    "Gagan" => "Santinagar",
+    "Aakriti" => "Kupandol",
+    "Hemraj" => "Manamaiju Pul",
+    "Sohel" => "Kritipur",
+];
+sort($student_data);
+foreach ($student_data as $student => $address) {
+    echo "Address of $student is $address";
+    echo "<br>";
+}
+echo "<br>";
+
+$nums = [1, 2, 3, 4, 5];
+var_dump($nums);
+echo "<br>";
+var_dump($student_data);
+echo "<br>";
+
+unset($nums[2]);
+$nums = array_values($nums);
+echo '';
+var_dump($nums);
+echo "<br>";
+echo reset($nums);
+echo "<br>";
+
+//json decode
+$json = '{"Title": "The Cuckoos Calling",
+    "Author": "Robert Galbraith",
+    "Detail":{
+    "Publisher": "Little Brown"
+
+}
+}';
+
+//$j1=json_decode($json);
+echo $json;
