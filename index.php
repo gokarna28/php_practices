@@ -361,5 +361,290 @@ $json = '{"Title": "The Cuckoos Calling",
 }
 }';
 
-//$j1=json_decode($json);
-echo $json;
+
+echo "<br>";
+$j1 = json_decode($json);
+
+echo $j1->Title;
+echo "<br>";
+echo $j1->Author;
+echo "<br>";
+echo $j1->Detail->Publisher;
+
+echo "<br>";
+
+//insert element in array
+$arr = [1, 2, 3, 4, 5];
+
+//using slice
+$array = array_slice($arr, 2);
+foreach ($array as $ar) {
+    echo $ar;
+}
+
+echo "<br>";
+//usiong splice to insert the element in the array
+array_splice($arr, 3, 1, '$');
+foreach ($arr as $ar1) {
+    echo $ar1;
+}
+echo "<br>";
+$array = [
+    "gokarna" => "23",
+    "rohan" => "22",
+    "Bishesh" => "21",
+    "sandesh" => "24",
+    "gagan" => "20",
+];
+
+// Sort associative array in ascending order according to value while preserving keys
+asort($array);
+
+foreach ($array as $key => $value) {
+    echo "Age of $key is $value";
+    echo "<br>";
+}
+echo "<br>";
+
+//sort associative array in ascending order according to key 
+ksort($array);
+foreach ($array as $key => $value) {
+    echo "Age of $key is $value";
+    echo "<br>";
+}
+echo "<br>";
+
+//sort associative array in decendig order according to value
+arsort($array);
+foreach ($array as $key => $value) {
+    echo "Age of $key is $value";
+    echo "<br>";
+}
+echo "<br>";
+
+//sort associative array in decending order accoroding to key
+krsort($array);
+foreach ($array as $key => $value) {
+    echo "Age of $key is $value";
+    echo "<br>";
+}
+echo "<br>";
+
+//average of the given temperature array
+$temp = [78, 60, 62, 68, 71, 68, 73, 85, 66, 64, 76, 63, 75, 76, 73, 68, 62, 73, 72, 65, 74, 62, 62, 65, 64, 68, 73, 75, 79, 73];
+$sum = 0;
+foreach ($temp as $temp_arr) {
+    $sum += $temp_arr;
+}
+
+$average = $sum / count($temp);
+echo "The average of temperature is:" . round($average, 2);
+echo "<br>";
+
+//lowest 7 in the array
+sort($temp);
+
+for ($i = 0; $i < 7; $i++) {
+    echo $temp[$i] . ",";
+}
+echo "<br>";
+//highest 7 in the array
+for ($i = count($temp) - 7; $i < count($temp); $i++) {
+    echo $temp[$i] . ",";
+}
+echo "<br>";
+$arr1 = ['gokarna', 'bishesh', 'sandesh'];
+$arr2 = ['rohan', 'gagan'];
+$array = [
+    array(1, 2, 3),
+    array(4, 5, 6),
+];
+
+
+print_r(array_merge($arr1, $array, $arr2));
+
+echo "<br><br>";
+//array all element to uppercase and to lowercase
+$color = [
+    "A" => "Red",
+    "B" => "Green",
+    "C" => "Blue",
+];
+
+foreach ($color as $key => $value) {
+    echo $key . ":" . strtoUpper($value) . "<br>";
+}
+
+//to lowercase
+foreach ($color as $key => $value) {
+    echo $key . ":" . strtolower($value) . "<br>";
+}
+
+echo "<br>";
+
+//return the numbers divisible by 4 between 200 and 250
+for ($i = 200; $i < 250; $i++) {
+    if ($i % 4 == 0) {
+        echo $i . ",";
+    }
+}
+
+echo "<br>";
+echo implode(",", range(200, 250, 4));
+echo "<br>";
+
+//to find the shortest length of string in array
+$student = ["gokarna", "himachal", "bishesh", "rohan", "sandesh"];
+
+$shortest = strlen($student[0]);
+
+for ($i = 0; $i < count($student); $i++) {
+    if (strlen($student[$i]) < $shortest) {
+        echo "The shortest string in array is " . $student[$i];
+    }
+    echo "<br>";
+    if (strlen($student[$i]) > $shortest) {
+        echo "The largest string in array is " . $student[$i];
+    }
+}
+//another way to do the same problem
+$new_arr = array_map("strlen", $student);
+echo "The shortest string length in the array is" . min($new_arr) . "." . "<br>"
+    . "The Longest string length in the array is" . max($new_arr) . ".";
+echo "<br>";
+
+//using array_map()
+function add($num)
+{
+    return $num * 2;
+}
+
+$array = [1, 2, 3, 4, 5];
+$new_array = array_map("add", $array);
+
+print_r($new_array);
+
+echo "<br>";
+
+//generate the random number between 11 and 20
+$nums = range(11, 20);
+shuffle($nums);
+foreach ($nums as $num) {
+    echo "," . $num;
+}
+echo "<br>";
+
+//return the largest key of the string.
+$fruits = [
+    "apple" => "23",
+    "orange" => "20",
+    "mango" => "40",
+    "watermellon" => "50",
+];
+echo max(array_keys($fruits)) . "<br>";
+echo min(array_keys($fruits)) . "<br>";
+
+
+//return the lowest integer that is not zero
+$numbers = [-50, -1, 0, 1, 2, 3, -100, 4];
+
+echo min($numbers);
+
+echo "<br>";
+//
+$Array = [
+    "Students" => ['gokarna', 'bishesh', 'rohan'],
+    "Position" => ['First', 'second', 'Third', 'Fourth'],
+];
+
+echo $Array['Students'][2];
+echo $Array['Position'][2];
+echo "<br>";
+//echo all the data of array
+foreach ($Array as $arr => $subArray) {
+    echo $arr . ":";
+    foreach ($subArray as $sub) {
+        echo $sub . ":";
+    }
+}
+echo "<br>";
+
+//sorting element of an array using user define sort
+function sortDefine($a, $b)
+{
+    global $order;
+
+    foreach ($order as $key => $value) {
+        if ($a == $value) {
+            return 0;
+            //break;
+        }
+        if ($b == $value) {
+            return 1;
+            //break;
+        }
+    }
+}
+
+$order[0] = 1;
+$order[1] = 3;
+$order[2] = 4;
+$order[3] = 2;
+
+$array[0] = 2;
+$array[1] = 1;
+$array[2] = 3;
+$array[3] = 4;
+$array[4] = 2;
+$array[5] = 1;
+$array[6] = 2;
+
+usort($array, "sortDefine");
+
+print_r($array);
+
+///sort the ip address
+function sort_subnets($x, $y)
+{
+    echo '<pre>';
+
+    // var_dump($y);
+
+    // Split IP subnets into arrays of octets
+    $x_arr = explode('.', $x);
+    $y_arr = explode('.', $y);
+
+    // Iterate through each octet and compare values
+    foreach (range(0, 3) as $i) {
+
+        // If the current octet in $x is less than the current octet in $y, return -1 (indicating $x comes first)
+        if ($x_arr[$i] < $y_arr[$i]) {
+            return -1;
+        }
+        // If the current octet in $x is greater than the current octet in $y, return 1 (indicating $y comes first)
+        elseif ($x_arr[$i] > $y_arr[$i]) {
+            return 1;
+        }
+    }
+
+    // If all octets are equal, return -1 (indicating $x comes first)
+    return -1;
+}
+
+// Define an array of IP subnets
+$subnet_list = array(
+    '192.169.12',
+    '192.167.11',
+    '192.169.14',
+    '192.168.13',
+    '192.167.12',
+    '122.169.15',
+    '192.167.16'
+);
+
+// Use 'usort' function to sort the array of IP subnets using the 'sort_subnets' custom sorting function
+usort($subnet_list, 'sort_subnets');
+
+
+// Print the sorted array of IP subnets
+print_r($subnet_list);
