@@ -726,3 +726,20 @@ sort($num_array, SORT_NATURAL | SORT_FLAG_CASE);//regular expressions
 foreach ($num_array as $num_a) {
     echo $num_a;
 }
+echo "<br>";
+//shuffle keys of array
+$suf_array = ["student1" => "Bishesh", "student2" => "Rohan", "student3" => "Sandesh"];
+
+$keys=array_keys($suf_array);
+shuffle($keys);
+//print_r($keys);
+
+$shuffled_array=[];
+
+foreach($keys as $key){
+    $shuffled[$key]=$suf_array[$key];
+}
+
+foreach($shuffled as $key=>$value){
+    echo $key. ":".$value."<br>";
+}
