@@ -376,12 +376,6 @@ echo "<br>";
 //insert element in array
 $arr = [1, 2, 3, 4, 5];
 
-//using slice
-$array = array_slice($arr, 2);
-foreach ($array as $ar) {
-    echo $ar;
-}
-
 echo "<br>";
 //usiong splice to insert the element in the array
 array_splice($arr, 3, 1, '$');
@@ -389,6 +383,9 @@ foreach ($arr as $ar1) {
     echo $ar1;
 }
 echo "<br>";
+
+
+
 $array = [
     "gokarna" => "23",
     "rohan" => "22",
@@ -648,3 +645,84 @@ usort($subnet_list, 'sort_subnets');
 
 // Print the sorted array of IP subnets
 print_r($subnet_list);
+
+
+// $num="3";
+// var_dump($num);
+// var_dump(intval($num));
+// var_dump(floatval($num));
+
+//usort
+$array = [
+    ["name" => 'sachin', "age" => 23],
+    ["name" => "Ramesh", "age" => 22],
+    ["name" => "Nikesh", "age" => 25],
+];
+
+usort($array, function ($a, $b) {
+    // if ($a['age'] == $b['age']) {
+    //     return 0;
+    // }
+    // return ($a['age'] < $b['age']) ? -1 : 1;
+
+    //we can use the spaceship operator to do the same thing
+    return $a['age'] <=> $b['age'];
+
+});
+//var_dump($array);
+foreach ($array as $arr) {
+    echo $arr['name'] . ": " . $arr['age'] . "<br>";
+}
+
+$multi = [
+    ["id" => "2025731470", "name" => "sana"],
+    ["id" => "2025731450", "name" => "Illiya"],
+    ["id" => "1025731456", "name" => "Robin"],
+    ["id" => "1025731460", "name" => "Samantha"],
+];
+
+usort($multi, function ($a, $b) {
+    return $a['id'] <=> $b['id'];
+});
+foreach ($multi as $mul) {
+    echo $mul['id'] . ": " . $mul['name'] . "<br>";
+}
+
+
+
+// Sort a multi-dimensional array set by a specific key
+$my_array = [
+    [
+        'name' => 'Sana',
+        'email' => 'sana@example.com',
+        'phone' => '111-111-1234',
+        'country' => 'USA'
+    ],
+    [
+        'name' => 'Robin',
+        'email' => 'robin@example.com',
+        'phone' => '222-222-1235',
+        'country' => 'UK'
+    ],
+    [
+        'name' => 'Anjali',
+        'email' => 'sofia@example.com',
+        'phone' => '333-333-1236',
+        'country' => 'India'
+    ]
+];
+
+usort($my_array, function ($a, $b) {
+    return $a['name'] <=> $b['name'];
+});
+
+foreach ($my_array as $array) {
+    echo "Name: " . $array['name'] . " Email: " . $array['email'] . " Phone: " . $array['phone'] . " Country: " . $array['country'] . "<br>";
+}
+
+$num_array = [6, 2, 3, 4, 5];
+
+sort($num_array, SORT_NATURAL | SORT_FLAG_CASE);//regular expressions
+foreach ($num_array as $num_a) {
+    echo $num_a;
+}
