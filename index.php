@@ -730,16 +730,83 @@ echo "<br>";
 //shuffle keys of array
 $suf_array = ["student1" => "Bishesh", "student2" => "Rohan", "student3" => "Sandesh"];
 
-$keys=array_keys($suf_array);
+$keys = array_keys($suf_array);
 shuffle($keys);
 //print_r($keys);
 
-$shuffled_array=[];
+$shuffled_array = [];
 
-foreach($keys as $key){
-    $shuffled[$key]=$suf_array[$key];
+foreach ($keys as $key) {
+    $shuffled[$key] = $suf_array[$key];
 }
 
-foreach($shuffled as $key=>$value){
-    echo $key. ":".$value."<br>";
+foreach ($shuffled as $key => $value) {
+    echo $key . ":" . $value . "<br>";
 }
+
+
+// function to generate the random pasword
+function RandomPass($upper = 1, $lower = 5, $numeric = 3, $other = 2)
+{
+    $pass_order = array();
+
+    for ($i = 0; $i < $upper; $i++) {
+        $pass_order[] = chr(rand(65, 90));
+    }
+
+    for ($i = 0; $i < $lower; $i++) {
+        $pass_order[] = chr(rand(97, 122));
+    }
+
+    for ($i = 0; $i < $numeric; $i++) {
+        $pass_order[] = chr(rand(48, 57));
+    }
+
+    for ($i = 0; $i < $other; $i++) {
+        $pass_order[] = chr(rand(33, 47));
+    }
+
+    shuffle($pass_order);
+
+    foreach ($pass_order as $pass) {
+        echo $pass;
+    }
+}
+RandomPass();
+
+echo "<br>";
+//search a specified vlaue within the vlaues of an associative array
+function arraySearch($array, $search)
+{
+    foreach ($array as $key => $val) {
+        if (preg_match("/$search/i", $val)) {
+            echo $search . " has been found in " . $key . "\n";
+        } else {
+            echo $search . " has not been found in " . $key . "\n";
+        }
+    }
+}
+
+$exercise = [
+    "part1" => "php array",
+    "part2" => "php string",
+    "part3" => "php math",
+];
+
+arraySearch($exercise, "math");
+
+//array_walk()
+
+$array = ['mango', 'ornage', 'banana', 'grapes'];
+print_r($array);
+
+array_walk($array, function ($val) {
+    print_r($val);
+});
+
+?>
+
+<button onclick="Show()" name="clickBtn">Click</button>
+<script>
+
+</script>
