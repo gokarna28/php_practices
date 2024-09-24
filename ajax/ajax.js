@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.forms["register_form"].addEventListener("submit", PostData);
+    fetchData();
 
-   
 });
 
 function PostData(event) {
@@ -16,7 +16,7 @@ function PostData(event) {
         return;
     }
     var params = "name=" + Name + "&age=" + Age + "&address=" + Address;
-    console.log(params)
+    //console.log(params)
     var http = new XMLHttpRequest();
     http.open("POST", "http://localhost/php_practice/ajax/send.php", true);
 
@@ -25,7 +25,6 @@ function PostData(event) {
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
             document.getElementById("message").innerHTML = http.responseText;
-            //fetchData();
         }
     }
     http.send(params);
@@ -44,7 +43,7 @@ function fetchData(event) {
         if (http2.readyState === 4 && http2.status === 200) {
 
             var data = JSON.parse(http2.responseText);
-            console.log(data);
+            //console.log(data);
 
             // Find the element to display the data
             var output = document.getElementById("students_details");
