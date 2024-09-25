@@ -5,28 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ajax in js</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <div>
-        <form id="myForm">
-            <input id="std_name" type="text" placeholder="Name">
-            <input id="std_age" type="number" placeholder="Age">
-            <input id="std_address" type="text" placeholder="Address">
-            <button typpe="submit">Submit</button>
+    <div class="bg-slate-200 p-4 flex flex-col items-center justify-center space-y-6">
+        <h1 class="text-3xl font-bold">Register Form</h1>
+        <form id="registerForm" class="flex flex-col items-center justify-center space-y-4">
+            <input class="border border-slate-400 rounded-md px-4 py-2 text-lg" id="std_name" type="text"
+                placeholder="Name">
+            <input class="border border-slate-400 rounded-md px-4 py-2 text-lg" id="std_age" type="number"
+                placeholder="Age">
+            <input class="border border-slate-400 rounded-md px-4 py-2 text-lg" id="std_address" type="text"
+                placeholder="Address">
+            <button typpe="submit"
+                class="bg-sky-600 text-white text-xl font-medium px-4 py-2 rounded-md">Submit</button>
         </form>
         <div id="response"></div>
     </div>
 
-    <div>
-        <h2>Students_details</h2>
+    <div id="table_container" class="bg-slate-100 p-4 flex flex-col items-center justify-center space-y-6">
+        <h2 class="text-2xl font-bold">Students_details</h2>
         <table id="student_table">
-            <thead>
-                <th>S.N</th>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Address</th>
-                <th>Action</th>
+            <thead class="bg-slate-500">
+                <th class="border">S.N</th>
+                <th class="border">Name</th>
+                <th class="border">Age</th>
+                <th class="border">Address</th>
+                <th class="border">Action</th>
             </thead>
             <tbody id="studentsDetails">
                 <!-- retrive data from database -->
@@ -34,7 +43,10 @@
         </table>
     </div>
 
-   <script src="script.js"></script>
+    <!-- updateform -->
+    <div id="updateForm" class="bg-slate-600/50 backdrop-blur-sm fixed top-0 h-screen w-full hidden"></div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

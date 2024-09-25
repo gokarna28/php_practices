@@ -10,15 +10,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if ($stmt) {
         $stmt->bind_param("sis", $data['std_name'], $data['std_age'], $data['std_address']);
 
-        $output = [
-            "name" => $data['std_name'],
-            "age" => $data['std_age'],
-            "address" => $data['std_address'],
-            "success" => "Successfully Inserted",
-        ];
-
         if ($stmt->execute()) {
-            // echo "successfully Inserted";
+
+            $last_id = $conn->insert_id;// get the inserted id\
+
+            $output = [
+                "id" => $last_id,
+                "name" => $data['std_name'],
+                "age" => $data['std_age'],
+                "address" => $data['std_address'],
+                "success" => "Successfully Inserted",
+            ];
+
             echo json_encode($output);
         } else {
             echo "Failed to insert";
@@ -28,9 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 }
 
+
+//retrive data
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
-    $sql = "SELECT * FROM students";
+    $sql = "SELECT * FROM students ORDER BY id DESC";
     $stmt = $conn->prepare($sql);
     if ($stmt) {
         $stmt->execute();
